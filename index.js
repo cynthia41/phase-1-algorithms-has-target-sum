@@ -1,20 +1,23 @@
+
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  for (let i = 0; i < array.length; i++) {
+    
+    const complement = target - array[i];
+    
+    for (let d = i + 1; d < array.length; d++) {
+      
+      if (array[d] === complement) return true;
+    }
+  }
+  
+  return false;
+
 }
 
 /* 
-  Write the Big O time complexity of your function here
+  Runtime: O(n^2)
 */
 
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
-
-// You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
   console.log("Expecting: true");
@@ -29,6 +32,13 @@ if (require.main === module) {
 
   console.log("Expecting: false");
   console.log("=>", hasTargetSum([1, 2, 5], 4));
+
+  console.log("Expecting: false");
+  console.log("=>", hasTargetSum([2, 6, 9, 10], 24));
+
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([5, 7, 9], 12));
+
 }
 
 module.exports = hasTargetSum;
